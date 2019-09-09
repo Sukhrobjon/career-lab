@@ -2,7 +2,6 @@
 A -> 1   
 B -> 2  
 C -> 3
-... 
 Z -> 26
 AA -> 27
 AB -> 28
@@ -13,19 +12,18 @@ column number.
 
 
 def excel_column_to_number(column):
-    """
-    """
-    offset = 64
+    """Converts a string(column title) to number representation"""
+    offset = 65     # capital 'A' ascii value
     # iterate throurgh the title
     # for each character
     # add the value by multiplying the base
     value = 0
-    base = 26
-    for index, char in enumerate(column):
-        char_val = ord(char) - offset
-        value += (base ** index) * char_val
-        # 1 += (26 ** 1) * 2
+    BASE = 26
+    for _, char in enumerate(column):
+        char_val = ord(char.upper()) - offset
+        print(char)
+        value = BASE * value + 1 + char_val
     return value
 
 
-print(excel_column_to_number("AB"))
+print(excel_column_to_number("AAb"))
