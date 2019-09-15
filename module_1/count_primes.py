@@ -29,10 +29,11 @@ def count_primes(n):
     for curr_num in range(2, n):
         # check if current number is prime
         if is_prime(curr_num):
+            print(curr_num)
             count += 1
     return count
 
 n = 2
-m = 1
+m = 10
 print("is prime:", is_prime(m))
 print("num of primes:", count_primes(m))
