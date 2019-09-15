@@ -11,10 +11,6 @@ def is_prime(n):
     Return:
         true or false(bool):
     """
-    # 1 is not prime
-    if n == 1:
-        return False
-
     for curr_num in range(2, n):
         # if input is evenly divisible by the current number
         if n % curr_num == 0:
