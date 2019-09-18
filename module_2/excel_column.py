@@ -13,35 +13,30 @@ import string
 
 
 def excel_column_to_number(column):
-    """Converts a string(column title) to number representation"""
+    """Converts a string(column title) to number representation
+    BDF = 1462
+    val = 0
+    B = 2 * (26 ** 2) = 1352
+    D = 4 * (26 ** 1) = 104
+    F = 6 * (26 ** 0) = 6
+    """
 
-    offset = 65     # capital 'A' ascii value
-    value = 0
+    offset = ord("A") - 1    # capital 'A' ascii value
+    result = 0
+    power = len(column) - 1
     BASE = 26
+
     for _, char in enumerate(column):
+        # handling non ascii values
         if char not in string.ascii_letters:
             raise ValueError("String should be ascii letter!")
-        char_val = ord(char.upper()) - offset
-        value = BASE * value + 1 + char_val
-    return value
-
-
-# print(excel_column_to_number("Ab"))
-
-# BDF = 1462
-# val = 0
-# B = 2 * (26 ** 2) = 1352
-# D = 4 * (26 ** 1) = 104
-# F = 6 * (26 ** 0) = 6
+        # getting the numerical value of curren char
+        cur_char = ord(char.upper()) - offset
+        result += cur_char * (BASE ** power)
+        # decrementing the power as we move to the left
+        power -= 1
+    return result
 
 
 column = "BDF"
-power = len(column) - 1
-result = 0
-base = 26
-for i in range(len(column)):
-    char_val = ord(column[i]) - 64
-    result += char_val * (base ** power)
-    power -= 1
-
-print(f"result: {result}")
+print(excel_column_to_number(column))
