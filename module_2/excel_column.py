@@ -26,4 +26,22 @@ def excel_column_to_number(column):
     return value
 
 
-print(excel_column_to_number("Ab"))
+# print(excel_column_to_number("Ab"))
+
+# BDF = 1462
+# val = 0
+# B = 2 * (26 ** 2) = 1352
+# D = 4 * (26 ** 1) = 104
+# F = 6 * (26 ** 0) = 6
+
+
+column = "BDF"
+power = len(column) - 1
+result = 0
+base = 26
+for i in range(len(column)):
+    char_val = ord(column[i]) - 64
+    result += char_val * (base ** power)
+    power -= 1
+
+print(f"result: {result}")
