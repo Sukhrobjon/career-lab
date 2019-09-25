@@ -1,7 +1,7 @@
 def first_missing_positive_int(integers):
     """Finds the first missing positive integer in the unsorted list
     Returns:
-        num(int): missing int in the sequence
+        num(int): missing int in the sequence(unsorted)
     """
     seen_nums = []
     for integer in integers:
