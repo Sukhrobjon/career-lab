@@ -2,7 +2,7 @@ def rotate_array_v1(arr, k):
     """
     Naive version: Given an array, rotate the array to the right by k steps,
     where k is non-negative.
-    Run time: O(n)
+    Run time: O(n)?
     Space Complexity: O(k) I need to ask
     """
     # 1st slice get all elements from k number of elements from last element
@@ -12,6 +12,8 @@ def rotate_array_v1(arr, k):
 
 def rotate_array_v2(arr, k):
     """
+    Given an array, rotate the array to the right by k steps,
+    where k is non-negative.
     """
     # run time of loop is O(k*n) as it runs insert operation k times
     # where insert takes O(n)

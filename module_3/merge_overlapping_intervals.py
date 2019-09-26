@@ -34,21 +34,20 @@ def merge_overlapping_intervals_v2(intervals):
     Given a collection of intervals, merge all overlapping intervals.
     Return them in a sorted order
     """
-    # for interval in intervals:
-    # check if the the number at the index of 1 of each interval
-    # if so add the interval[0] and next interval[1] to the new array
 
     if len(intervals) == 0:
         return []
+    # we need sorted array
     intervals = sorted(intervals)  # O(nlog(n))
-    # to hold the final values
-    merged_stack = [intervals[0]]
 
-    j = 0
+    # to hold the merged intervals
+    merged_stack = [intervals[0]]
+    j = 0  # counter for merged stack
+    
     for i in range(1, len(intervals)):
         # check if the interval in the merged stack and intervals are
         # overlapping
-        if merged_stack[j] < intervals[i] and merged_stack[j][1] >= intervals[i][0]:
+        if merged_stack[j][0] < intervals[i][1] and merged_stack[j][1] >= intervals[i][0]:
             curr_item = merged_stack.pop(j)
             # print("last item: ", curr_item)
             merged_stack.append([curr_item[0], intervals[i][1]])
