@@ -13,7 +13,7 @@ def pascal_triangle(num_rows):
             else:
                 coef = pascal[row-1][col-1] + pascal[row-1][col]
                 print(coef, end=" ")
-                
+
                 curr_row.append(coef)
             # curr_row.append(row)
         pascal.append(curr_row)
