@@ -1,22 +1,42 @@
-def anagram(word1, word2):
+def is_anagram_v1(word1, word2):
     """Determines if two words are anagram of each other"""
 
     # if the strings are not equal length they can't be anagram
     if len(word1) != len(word2):
         return False
 
-    s1 = 0
-    s2 = 0
+    offset = 97
+    count_s = [0] * 26
+    count_t = [0] * 26
 
-    # add up the ascii values of each chars
     for i in range(len(word1)):
-        s1 += ord(word1[i])
-        s2 += ord(word2[i])
-    # compare if sums are equal
-    return s1 == s2
+        count_s[ord(word1[i])-offset] += 1
+        count_t[ord(word2[i])-offset] += 1
+    print(count_s)
+    print(count_t)
+    return 0 if count_s == count_t else 1
 
 
-word1 = "*$a*):"
-word2 = "$*a*:)"
+def is_anagram_v2(word1, word2):
+    """Determines if two words are anagram of each other"""
 
-print(anagram(word1, word2))
+    # if the strings are not equal length they can't be anagram
+    if len(word1) != len(word2):
+        return False
+
+    offset = 97
+    count = [0] * 26
+
+    for i in range(len(word1)):
+        count[ord(word1[i])-offset] += 1
+        count[ord(word2[i])-offset] -= 1
+    print(f"all chars: {count}")
+    for i in count:
+        if i != 0:
+            return False
+    return True
+
+
+word1 = "abcdefghijklmnopqrstuaaaaa"
+word2 = "zbcdefghijklmnopqrstuvwxyy"
+print(is_anagram_v2(word1, word2))
