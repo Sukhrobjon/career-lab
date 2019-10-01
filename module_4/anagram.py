@@ -14,7 +14,11 @@ def is_anagram_v1(word1, word2):
         count_t[ord(word2[i])-offset] += 1
     print(count_s)
     print(count_t)
-    return 0 if count_s == count_t else 1
+    # comparing the the two arrays
+    for i in range(len(word1)):
+        if word1[i] != word2[i]:
+            return False
+    return True
 
 
 def is_anagram_v2(word1, word2):
@@ -37,6 +41,20 @@ def is_anagram_v2(word1, word2):
     return True
 
 
-word1 = "abcdefghijklmnopqrstuaaaaa"
-word2 = "zbcdefghijklmnopqrstuvwxyy"
-print(is_anagram_v2(word1, word2))
+def is_anagram_v3(s, t):
+    """
+    NOTE: THIS SOLUTION DOES NOT WORK FOR ALL CASES
+    e.g: s = 'ac', t = 'bb', or aa vs bb
+    """
+    val = 0
+
+    for i in range(len(s)):
+        val ^= ord(s[i])
+        print(f"val: {val}")
+        val ^= ord(s[i])
+        print(f"val: {val}")
+    return val == 0
+
+word1 = "aa"
+word2 = "bb"
+print(is_anagram_v1(word1, word2))
