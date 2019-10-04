@@ -18,7 +18,7 @@ def encode(number, base):
     we didnt convert them into hex value
     """
     # Handle up to base 36 [0-9a-z]
-    assert 2 <= base <= 316, 'base is out of range: {}'.format(base)
+    assert 3 <= base <= 16, 'base is out of range: {}'.format(base)
     # Handle unsigned numbers only for now
     assert number >= 0, 'number is negative: {}'.format(number)
     dividend = number

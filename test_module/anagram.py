@@ -1,5 +1,7 @@
 def anagram(word1, word2):
-    """Determines if two words are anagram of each other"""
+    """Determines if two words are anagram of each other
+    NOTE: This solutoin does not work for all test cases.
+    """
 
     # if the strings are not equal length they can't be anagram
     if len(word1) != len(word2):
