@@ -9,7 +9,7 @@ def binary_search(array, target):
     while left < right:
         # mid = (right + left) // 2
         mid = left + (right - left) // 2
-        print(f"mid {mid}")
+        # print(f"mid {mid}")
         if array[mid] == target:
             return mid
         elif array[mid] < target:
@@ -17,6 +17,7 @@ def binary_search(array, target):
         else:
             right = mid
     return -1
+
 
 def first_binary_search(array, target):
     """
@@ -28,18 +29,35 @@ def first_binary_search(array, target):
     Returns:
         index (int): the first occurrence of the target, -1 if not found
     """
+    
+    first_occur = binary_search(array, target)
+    print(f"first occurrence: {first_occur}")
+    if first_occur == -1:
+        return -1
+
     left = 0
-    right = len(array)
-    first_occur = -1
+    right = first_occur
+
     while left < right:
         mid = left + (right - left) // 2
-
+        # print(f"while:")
+        print(f"left: {left}, right: {right}, mid: {mid}")
         if target == array[mid]:
-            if mid < first_occur and first_occur == -1:
+            if mid < first_occur:
                 first_occur = mid
+                print(f"mid < first")
+                right = mid
+        elif target > array[mid]:
+            left = mid + 1
+        else:
+            right = mid
+
+    return first_occur
 
 
-array = [5, 7, 7, 8, 8, 10]
+
+array = [8, 8, 10]
+all_dups = [1, 1, 1, 1, 1, 1]
 print(array)
-result = binary_search(array, 8)
+result = first_binary_search(all_dups, 1)
 print(result)
