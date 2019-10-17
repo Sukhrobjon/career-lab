@@ -1,5 +1,7 @@
 def search_for_range(array, target):
-    pass
+    first = first_occur_binary_search(array, target)
+    last = last_occur_binary_search(array, target)
+    return [first, last]
 
 
 def binary_search(array, target):
@@ -19,7 +21,7 @@ def binary_search(array, target):
     return -1
 
 
-def first_binary_search(array, target):
+def first_occur_binary_search(array, target):
     """
     Search for the first occurrence of the target and returns the
     index, or -1 if target not found.
@@ -43,10 +45,10 @@ def first_binary_search(array, target):
         # print(f"while:")
         print(f"left: {left}, right: {right}, mid: {mid}")
         if target == array[mid]:
-            if mid < first_occur:
-                first_occur = mid
-                print(f"mid < first")
-                right = mid
+            # there is another target in the array, now updating
+            first_occur = mid
+            # print(f"mid < first")
+            right = mid
         elif target > array[mid]:
             left = mid + 1
         else:
@@ -55,9 +57,43 @@ def first_binary_search(array, target):
     return first_occur
 
 
+def last_occur_binary_search(array, target):
+    """
+    Search for the first occurrence of the target and returns the
+    index, or -1 if target not found.
+    Args:
+        array (list): list of integers
+        target (int): a target to be found
+    Returns:
+        index (int): the first occurrence of the target, -1 if not found
+    """
 
-array = [8, 8, 10]
-all_dups = [1, 1, 1, 1, 1, 1]
+    last_occur = binary_search(array, target)
+
+    # the target is not in the array
+    if last_occur == -1:
+        return -1
+    print(f"last occur: {last_occur}")
+    left = last_occur
+    right = len(array)
+
+    while left < right:
+        mid = left + (right - left) // 2
+        print(f"left: {left}, right: {right}, mid: {mid}")
+        if target == array[mid]:
+            # if mid > last_occur
+            last_occur = mid
+            left = mid + 1
+
+        elif target > array[mid]:
+            left = mid + 1
+        else:
+            right = mid
+    return last_occur
+    
+
+array = [3, 5, 7, 7, 8, 10]
+all_dups = [1, 1, 1, 1, 1, 1, 1]
 print(array)
-result = first_binary_search(all_dups, 1)
+result = search_for_range(array, 6)
 print(result)
