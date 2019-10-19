@@ -19,7 +19,8 @@ def factorial(n):
         return n * factorial(n-1)
 
 
+
 n = 4
 m = 6
 
-print(last_factorial_digit(n))
+print(last_factorial_digit(m))

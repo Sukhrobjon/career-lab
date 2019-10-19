@@ -28,6 +28,7 @@ def server_time_check(task_config, task_times):
             return
 
 
+# task config is [num of tasks, max time to be spent on]
 task_config = [10, 200]
 task_times = [20, 70, 40, 30, 10, 27, 2, 3, 10, 5]
 

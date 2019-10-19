@@ -38,5 +38,5 @@ def excel_column_to_number(column):
     return result
 
 
-column = "BDF"
+column = "ABC"
 print(excel_column_to_number(column))

@@ -27,10 +27,11 @@ class Solution(object):
         else:
             return INT_MIN
 
+
 text = ["42", "   -42", "-4193 with words", "words and 987", "-91283472332"]
-# word = "987  "
+word = ".1"
 obj = Solution()
 
-for word in text:   
-    result = obj.atoi(word)
-    print(result)
+# for word in text:   
+result = obj.atoi(word)
+    # print(result)

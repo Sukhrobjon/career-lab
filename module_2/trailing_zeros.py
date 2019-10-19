@@ -1,6 +1,6 @@
 def trailing_zeros(n):
     """Returns number of trailing zeros in n factorial."""
-    # factorial of nums less 5 doesnt end with 0
+    # factorial of nums less 5 doesn't end with 0
     if n < 5:
         return 0
     # example: n = 11
@@ -10,4 +10,4 @@ def trailing_zeros(n):
     return result
 
 
-print(trailing_zeros(11))
+print(trailing_zeros(20))
