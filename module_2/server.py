@@ -9,8 +9,8 @@ def server_time_check(task_config, task_times):
     """
     # converting user input into lists
     # comment this out if the input is given by user on terminal
-    # task_config = task_config.split(" ")
-    # task_times = task_times.split(" ")
+    # task_config = task_config.split()
+    # task_times = task_times.split()
 
     max_min = int(task_config[1])
     total_task_mins = 0

@@ -10,7 +10,8 @@ def sum_of_squares(k, base, number):
 
 # max 32 unsigned integer = 4,294,967,295
 def encode(number, base):
-    """Encode given number in base 10 to digits in given base.
+    """
+    Encode given number in base 10 to digits in given base.
     number: int -- integer representation of number (in base 10)
     base: int -- base to convert to
     return: str -- string representation of number (in given base)
@@ -46,6 +47,7 @@ def encode(number, base):
         result.append(str(remainder))
 
     return result
+
 
 k = 1
 base = 16
