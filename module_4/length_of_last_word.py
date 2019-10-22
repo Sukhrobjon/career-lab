@@ -4,7 +4,7 @@ def length_of_last_word(text):
     characters ' ', return the length of last word in the string.
 
     NOTE: Please make sure you try to solve this problem without using library
-    functions. Make sure you only traverse the string once. If there is one word
+    functions. Make sure you only traverse the string once.If there is one word
     it is the last word.
     Args:
         text (str): long string consisted of word(s)
@@ -17,16 +17,19 @@ def length_of_last_word(text):
     # start iterating the string at the end of it
     for i in range(len(text)-1, -1, -1):
         char = text[i]
-        if char.isalpha():
+        if char.isalpha() and i == 0:
+            length = 0
+        elif char.isalpha():
             last_word += char
             length += 1
-        # stop the loop if we there is space, because it means we
-        # count the length of the last word already
-        elif char.isspace():      
+        # stop the loop if we there is space, because it means
+        # we count the length of the last word already
+        elif char.isspace():
             break
+        
     # print(last_word[::-1])
     return length
 
 
-text = "Helloworld"
+text = "world"
 print(length_of_last_word(text))
