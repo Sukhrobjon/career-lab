@@ -27,7 +27,9 @@ def is_bad_version(version):
 
 def first_bad_version(last_version, is_bad_version):
     """
-    Finds the first bad version
+    Finds the first bad version.
+    Runtime: O(n), I should have thought this function as if
+    find the min number in the sorted list. 
     """
     for version in range(last_version, -1, -1):
         print(f"version: {version}")
@@ -35,5 +37,21 @@ def first_bad_version(last_version, is_bad_version):
             return version + 1
 
 
+def first_bad_version_v2(last_version, is_bad_version):
+    """
+    Finds the first bad version.
+    Runtime: O(logn) as binary search was used
+    """
+    left = 1
+    right = last_version
+    while left < right:
+        mid = left + ((right - left) // 2)
+        if is_bad_version(mid):
+            right = mid
+        else:
+            left = mid + 1
+    return left
+
+
 last_version = 9
-print(first_bad_version(last_version, is_bad_version))
+print(first_bad_version_v2(last_version, is_bad_version))
