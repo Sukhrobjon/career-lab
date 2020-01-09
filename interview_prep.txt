@@ -1,0 +1,59 @@
+January 17, 2019
+Jeff:
+dont look around, just focus on yourself, 
+TO-DO:
+- Updated portfolio and resume
+
+Dan:
+
+Project 
+    - use verbs common in target job description
+    - Fully describe technologies and outcomes
+    - useful contexte
+    - use data where possible
+
+Skills:
+    - list strongest first, weakest last, no icons
+
+Education:
+    - put at the buttom, projects 
+
+Intersets:
+    - spike lee movies, MU, Epthionpian cooking, karoake
+
+
+BRAUS:
+
+    portfolios ?? why are they important?
+
+    Problem: Information Asymmetry 
+        - One or some agents know a lot, others know very little
+
+        you know what others dont know about you
+        Semaphore signals
+        superficial signals - can be showed seconds
+    1. Postion fit 
+        a. portfolio
+        b. Degree in CS
+        c. Github
+        d. Technicaln Discussions
+        e. Coding inrerviews
+        f. Coding challenges
+    2. Culture fit
+        a. Behavioral Interviews 
+        b. Dress
+        c. Speech & Writing
+    3. Mission fit
+        a. Stating your values
+        b. Showing interest & knowledge
+
+    
+Jeff:
+
+Adobe recruiter:
+
+ - add your contact info 
+ - attach your resume
+ 
+ CONTACTING recruiter:
+    - 
