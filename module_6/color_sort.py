@@ -26,6 +26,7 @@ robot.
 Original Platform:  https://leetcode.com/problems/sort-colors/ 
 """
 
+
 def color_sort(nums):
     """Optimized version"""
     # first occurance of 1
