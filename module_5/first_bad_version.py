@@ -40,7 +40,7 @@ def first_bad_version(last_version, is_bad_version):
 def first_bad_version_v2(last_version, is_bad_version):
     """
     Finds the first bad version. (replication of finding the min number in
-    rotated array, that was my first though)
+    rotated array, that was my first thought)
     Runtime: O(logn) as binary search was used
     """
     left = 1
