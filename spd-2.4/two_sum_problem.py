@@ -17,8 +17,6 @@ class TwoSum():
 
         return all_pairs
     
-    # TODO: there is a bug, left and right should always be incremented or
-    # decremented by 1
     def two_sum_v2(self, numbers, target):
         """
         Given an array of numbers and target value, return all pairs
@@ -29,18 +27,23 @@ class TwoSum():
         """
         s_numbers = sorted(numbers)  # O(nlogn)
         left, right = 0, len(s_numbers) - 1
-        all_pairs = list()
+        # all_pairs = list()
 
         # it left should be strictly less than right pointer
         # in terms of its position, because we can't add the same
         # number to itself
-        while left < right:  # O(logn)
+        while left < right:  # O(n)?
             if s_numbers[left] + s_numbers[right] == target:
-                all_pairs.append([s_numbers[left], s_numbers[right]])
-            left += 1
-            right -= 1
+                # return [left, right]
+                return s_numbers[left], s_numbers[right]
+            # if the current sum is less than target we should try
+            # to add bigger numbers
+            elif s_numbers[left] + s_numbers[right] < target:
+                left += 1
+            else:
+                right -= 1
 
-        return all_pairs
+        return [0, 0]
 
     def two_sum_v3(self, numbers, target):
         """
@@ -51,7 +54,7 @@ class TwoSum():
         number in the numbers array.
         Returns: all_pairs(list of list)
         """
-        all_pairs = list()
+        # all_pairs = list()
         seen = dict()
 
         for i, number in enumerate(numbers):
@@ -59,9 +62,10 @@ class TwoSum():
             if complement not in seen:
                 seen[number] = i
             else:   # we found the pair
-                all_pairs.append([complement, number])
+                # all_pairs.append([complement, number])
+                return [complement, number]
         
-        return all_pairs
+        return []
 
     def two_sum_with_duplicate(self, numbers, target):
         """
@@ -86,8 +90,9 @@ class TwoSum():
         
         return numbers_dict
 
-numbers = [5, 3, 6, 3, 8, 2, 2, 8, 4, 7]
+
+numbers = [5, 6, 3, 4, 2, 7, 8]
 target = 10
 obj = TwoSum()
-result = obj.two_sum_with_duplicate(numbers, target)
+result = obj.two_sum_v2(numbers, target)
 print(result)
