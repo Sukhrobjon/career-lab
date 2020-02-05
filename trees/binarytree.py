@@ -1,6 +1,6 @@
 #!python
-from stack import LinkedStack
-from queue import LinkedQueue
+# from stack import LinkedStack
+# from queue import LinkedQueue
 
 
 class BinaryTreeNode(object):
@@ -250,9 +250,9 @@ class BinarySearchTree(object):
         if not self.is_empty():
             # Traverse tree in-order from root, appending each node's item
             # item.append is uncalled function
-            self._traverse_in_order_recursive(self.root, items.append)
+            # self._traverse_in_order_recursive(self.root, items.append)
 
-            # self._traverse_in_order_iterative(self.root, items.append)
+            self._traverse_in_order_iterative(self.root, items.append)
         # Return in-order list of all items in tree
         return items
 
@@ -276,19 +276,30 @@ class BinarySearchTree(object):
         Running time: O(n) we are visiting each node
         Memory usage: O(n) creating a stack with number of nodes in the tree"""
 
-        stack = LinkedStack()
-        stack.push(node)  # push the root node
-        while not stack.is_empty():
-            if(stack.peek().left != None):  # if node has left child
-                stack.push(stack.peek().left)
+        stack = []
+        while stack or node:
+            if node is not None:
+                # push it to stack
+                stack.append(node)
+                node = node.left
             else:
+                # pop top of the stack
                 node = stack.pop()
                 visit(node.data)
-                if(not stack.is_empty()):
-                    node = stack.pop()
-                    visit(node.data)
-                if(node.right is not None):
-                    stack.push(node.right)
+                # move node to the right
+                node = node.right
+
+        # while stack:
+        #     if(stack[-1].left != None):  # if node has left child
+        #         stack.append(stack[-1].left)
+        #     else:
+        #         node = stack.pop()
+        #         visit(node.data)
+        #         if len(stack) != 0:
+        #             node = stack.pop()
+        #             visit(node.data)
+        #         if(node.right is not None):
+        #             stack.append(node.right)
 
     def items_pre_order(self):
         """Return a pre-order list of all items in this binary search tree."""
@@ -409,6 +420,7 @@ class BinarySearchTree(object):
         """
         queue = [node]
         pass
+    
     def _traverse_level_order_iterative(self, start_node, visit):
         """Traverse this binary tree with iterative level-order traversal (BFS).
         Start at the given node and visit each node with the given function.
@@ -462,9 +474,9 @@ def test_binary_search_tree():
 
     print('\nTraversing items:')
     print('items in-order:    {}'.format(tree.items_in_order()))
-    print('items pre-order:   {}'.format(tree.items_pre_order()))
-    print('items post-order:  {}'.format(tree.items_post_order()))
-    print('items level-order: {}'.format(tree.items_level_order()))
+    # print('items pre-order:   {}'.format(tree.items_pre_order()))
+    # print('items post-order:  {}'.format(tree.items_post_order()))
+    # print('items level-order: {}'.format(tree.items_level_order()))
 
 
 if __name__ == '__main__':

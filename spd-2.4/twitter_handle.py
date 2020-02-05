@@ -31,6 +31,12 @@ class SimilarAccounts():
                 score += 1
             elif anagram1[i] >= 1 and anagram2[i] == 0:
                 score -= 1
+            elif anagram2[i] >= 1 and anagram1[i] > 0:
+                score += 1
+            elif anagram2[i] >= 1 and anagram1[i] == 0:
+                score -= 1
+        
+        return score
 
     def get_score_with_set(self, handle1, handle2):
 
@@ -70,7 +76,9 @@ new_user = 'iLoveDogs'
 obj = SimilarAccounts()
 result1 = obj.make_anagram(new_user)
 result2 = obj.make_anagram('DogeCoin')
+anagram_score = obj.get_score_with_anagram(new_user, 'DogeCoin')
 set_score = obj.get_score_with_set(new_user, 'DogeCoin')
 print("New us:", result1)
 print("Handle:", result2)
-print("set score", set_score)
+print("anagram score:", anagram_score)
+print("set score:", set_score)
