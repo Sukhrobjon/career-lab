@@ -1,3 +1,5 @@
+from heapq import nlargest
+
 class SimilarAccounts():
     
     def suggest(self, new_user: str, handles: list, k: int = 2):
@@ -13,8 +15,16 @@ class SimilarAccounts():
         Returns:
             handle(tuple): two most similar score accounts
         """
+        # stores the handle and score as (handle, score)
         scores = []
-        pass
+        
+        for handle in handles:
+            score = self.get_score_with_set(new_user, handle)
+            scores.append((handle, score))
+        # get the k largest handles
+        k_handles = nlargest(k, scores, lambda score: score[1])
+        
+        return [h[0] for h in k_handles]
 
     def get_score_with_anagram(self, handle1, handle2):
         """
@@ -24,6 +34,8 @@ class SimilarAccounts():
         """
         anagram1 = self.make_anagram(handle1)
         anagram2 = self.make_anagram(handle2)
+        print(f"{handle1} anagram: {anagram1}")
+        print(f"{handle2} anagram: {anagram2}")
         
         score = 0
         for i in range(len(anagram1)):
@@ -40,17 +52,21 @@ class SimilarAccounts():
 
     def get_score_with_set(self, handle1, handle2):
 
-        handle1 = set(handle1)
-        handle2 = set(handle2)
+        handle1 = set(handle1.lower())
+        handle2 = set(handle2.lower())
+        # print(f'handle1 set: {handle1}, \nhandle2 set: {handle2}')
 
+        # number of -1s, all unmatch letters
         sym_diff = handle1.symmetric_difference(handle2)
+        # number of +1s all matching letters
         intersection = handle1.intersection(handle2)
 
-        print(sym_diff, intersection)
 
-        score = intersection - sym_diff
+        # print(f"symmetric difference: {sym_diff}, \nintersection: {intersection}")
+
+        score = len(intersection) - len(sym_diff)
         
-        return len(score)
+        return (score)
 
     def make_anagram(self, word):
         """
@@ -68,6 +84,7 @@ class SimilarAccounts():
 
         return anagram
 
+# NOTE: this solution assumes the handles are only english letters
 
 handles = ['DogeCoin', 'YangGang', 'HodlForLife',
            'fakeDonaldDrumpf', 'GodIsLove', 'BernieOrBust']
@@ -76,9 +93,10 @@ new_user = 'iLoveDogs'
 obj = SimilarAccounts()
 result1 = obj.make_anagram(new_user)
 result2 = obj.make_anagram('DogeCoin')
-anagram_score = obj.get_score_with_anagram(new_user, 'DogeCoin')
-set_score = obj.get_score_with_set(new_user, 'DogeCoin')
-print("New us:", result1)
-print("Handle:", result2)
-print("anagram score:", anagram_score)
-print("set score:", set_score)
+anagram_score = obj.get_score_with_anagram(new_user, 'GodIsLove')
+set_score = obj.get_score_with_set(new_user, 'GodIsLove')
+print(f"anagram score:", anagram_score)
+print(f"set score:", set_score)
+k_handles = obj.suggest(new_user, handles, 4)
+
+print(k_handles)

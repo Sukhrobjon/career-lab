@@ -12,7 +12,12 @@ class Business():
         return (f"name: {self.name}, location: {self.location}, id: {self._id}")
 
 
-def unique_chains(buss_obj, location):
+def get_unique_business_id():
+    """
+    Returns only businesses with unique id
+    """
+    pass
+def unique_chains(self, buss_obj, location):
     """Counts the unique number of chains in the given location"""
     seen_id = set()
     chains = {}
@@ -36,10 +41,11 @@ businesses = [
             Business("Amazon", "SF", 103),
             Business("Amazon", "SF", 110),
             Business("McDonalds", "SF", 104),
-            Business("McDonalds", "SF", 105),
+            Business("McDonalds", "SF", 104),
             Business("McDonalds", "NYC", 106)
             ]
 
+obj = Business()
 
-result = unique_chains(businesses, "SF")
+result = obj.unique_chains(businesses, "SF")
 print(result)
