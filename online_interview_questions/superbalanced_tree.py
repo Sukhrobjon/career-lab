@@ -7,7 +7,8 @@ def is_balanced(tree_root):
         return True
     # depth
     depths = list()
-    min_d, max_d = 0, 0
+    # min_d, max_d = 0, 0
+    # stores node and its depth
     nodes_stack = []
     nodes_stack.append((tree_root, 0))
 
