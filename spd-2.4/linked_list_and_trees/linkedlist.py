@@ -108,6 +108,24 @@ class LinkedList():
         
         return curr.data
 
+    def pop_head(self):
+        """Pop the head and return that node"""
+
+        # if LL is not empty
+        if not self.is_empty():
+            # get the current head
+            curr_head = self.head
+
+            # reassign the new head
+            self.head = self.head.next
+            return curr_head
+        
+        # if linked list is empty
+        return None
+
+    def reverse_linkedlist(self, node):
+        """Reverse the given linked list and return head"""
+        pass
 
 def test_linked_list():
     ll = LinkedList()
@@ -125,11 +143,13 @@ def test_linked_list():
     print('size: {}'.format(ll.size))
     print('length: {}'.format(ll.length()))
 
-    print('Getting items by index:')
-    for index in range(ll.size):
-        item = ll.get_at_index(index)
-        print('get_at_index({}): {!r}'.format(index, item))
-
+    # print('Getting items by index:')
+    # for index in range(ll.size):
+    #     item = ll.get_at_index(index)
+    #     print('get_at_index({}): {!r}'.format(index, item))
+    print("Popping head node:")
+    ll.pop_head()
+    print(ll)
     # print('Deleting items:')
     # ll.delete('B')
     # print(ll)
