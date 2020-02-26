@@ -23,7 +23,7 @@ class SimilarAccounts():
             scores.append((handle, score))
         # get the k largest handles
         k_handles = nlargest(k, scores, lambda score: score[1])
-        
+        # printing out only the handles, not scores
         return [h[0] for h in k_handles]
 
     def get_score_with_anagram(self, handle1, handle2):
@@ -97,6 +97,6 @@ anagram_score = obj.get_score_with_anagram(new_user, 'GodIsLove')
 set_score = obj.get_score_with_set(new_user, 'GodIsLove')
 print(f"anagram score:", anagram_score)
 print(f"set score:", set_score)
-k_handles = obj.suggest(new_user, handles, 4)
+k_handles = obj.suggest(new_user, handles, 2)
 
 print(k_handles)
