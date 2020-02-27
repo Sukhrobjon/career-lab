@@ -37,7 +37,7 @@ class Solution(object):
         return len(stack) == 0
 
 
-s = ''
+s = ']{'
 obj = Solution()
 result = obj.is_valid(s)
 print(result)

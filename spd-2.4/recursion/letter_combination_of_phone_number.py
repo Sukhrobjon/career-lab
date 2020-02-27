@@ -44,20 +44,47 @@ class Solution(object):
                     }
         all_combinations = [""]
         for digit in digits:
-            print(f'digit: {digit}')
+            
             current_comb = []
-            print(f'curr comb {current_comb}')
+            
             for com in all_combinations:
                 for letter in digit_map[digit]:
-                    print(f'com {com}, letter: {letter}')
+                    
                     current_comb.append(com + letter)
-            print(f'all: {all_combinations}')
+            
             all_combinations = current_comb
-            print(f'after all: {all_combinations}')
+            
         return all_combinations
 
+    def rec_combination(self, digits, all_combinations=None):
+        """
+    
+        """
+        digit_map = {
+                        '1': ' ', '2': 'abc', '3': 'def',
+                        '4': 'ghi', '5': 'jkl', '6': 'mno',
+                        '7': 'pqrs', '8': 'tuv', '9': 'wxyz'
+                    }
+        # base case, all combinations is None
+        if all_combinations is None:
+            all_combinations = [""]
+        # no digits left to add up
+        if digits == "":
+            return all_combinations
+        
+        # current digit
+        digit = digits[0]
 
-digits = '23'
+        current_combo = []
+        for combo in all_combinations:
+            for letter in digit_map[digit]:
+                current_combo.append(combo + letter)
+
+        return self.rec_combination(digits[1:], current_combo)
+
+
+digits = '234'
 obj = Solution()
-combinations = obj.iterative_combination(digits)
+combinations = obj.rec_combination(digits)
+# combinations = obj.iterative_combination(digits)
 print(combinations)
