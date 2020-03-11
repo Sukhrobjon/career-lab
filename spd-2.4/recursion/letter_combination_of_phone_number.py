@@ -34,7 +34,7 @@ class Solution(object):
 
     def iterative_combination(self, digits):
         """
-        Credit: 
+        Credit:
         https://leetcode.com/problems/letter-combinations-of-a-phone-number/discuss/184395/Python-20ms-faster-than-100.00-of-other-python-submissions
         """
         digit_map = {
